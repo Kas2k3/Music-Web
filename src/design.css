@@ -463,7 +463,6 @@ header .song_side nav ul li {
     margin-right: 25px;
     cursor: pointer;
     transition: 0.3s linear;
-
 }
 
 header .song_side nav ul li:hover {
@@ -482,15 +481,17 @@ header .song_side nav ul li span {
     bottom: -5px;
     left: 0;
     border-radius: 20px;
-
 }
 
 header .song_side nav .search {
     position: relative;
     width: 40%;
-    padding: 1px 10px;
+    height: 50%;
+    /* padding: 0px; */
     border-radius: 20px;
     /* border: 1px solid #fff; */
+    display: flex;
+    align-items: center;
     color: #000;
 }
 
