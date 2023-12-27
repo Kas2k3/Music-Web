@@ -77,6 +77,24 @@ const songs = [
 
 
 
+Array.from(document.getElementsByClassName('songItem')).forEach((e, i) => {
+    e.getElementsByTagName('img')[0].src = songs[i].poster;
+    e.getElementsByTagName('hs')[0].innerHTML = songs[i].songName;
+});
+
+let masterPlay = document.getElementById('masterPlay');
+let wave = document.getElementById('wave');
+
+masterPlay.addEventListener('click', () => {
+    if (music.paused || music.currentTime <= 0) {
+        music.play();
+        wave.classList.add('active1');
+    }
+    else {
+        music.pause();
+        wave.classList.remove('active1');
+    }
+})
 
 
 
