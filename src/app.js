@@ -153,9 +153,9 @@ Array.from(document.getElementsByClassName('playListPlay')).forEach((e) => {
 
 let currentStart = document.getElementById('currentStart');
 let currentEnd = document.getElementById('currentEnd');
-// let seek = document.getElementById('seek');
-// let bar2 = document.getElementById('bar2');
-// let dot = document.getElementById('dot')[0];
+let seek = document.getElementById('seek');
+let bar2 = document.getElementById('bar2');
+let dot = document.getElementsByClassName('dot')[0];
 
 music.addEventListener('timeupdate', () => {
     let music_curr = music.currentTime;
@@ -177,14 +177,53 @@ music.addEventListener('timeupdate', () => {
     }
     currentStart.innerText = `${min2}:${sec2}`;
 
-    // let progressBar = parseInt((music_curr / music_dur) * 100);
-    // seek.value = progressBar;
-    // // console.log(seek.value);
-    // let seekbar = seek.value;
+    let progressBar = parseInt((music_curr / music_dur) * 100);
+    seek.value = progressBar;
+    // console.log(seek.value);
+    let seekbar = seek.value;
+    bar2.style.width = `${seekbar}%`;
+    dot.style.left = `${seekbar}%`;
+});
 
+seek.addEventListener('change', () => {
+    music.currentTime = seek.value * music.duration / 100;
+});
 
-})
+let vol_icon = document.getElementById('vol_icon');
+let vol = document.getElementById('vol');
+let vol_bar = document.getElementsByClassName('vol_bar')[0];
+let vol_dot = document.getElementById('vol_dot');
 
+vol.addEventListener('change', () => {
+    if (vol.value == 0) {
+        vol_icon.classList.remove('bi-volume-up-fill');
+        vol_icon.classList.remove('bi-volume-down-fill');
+        vol_icon.classList.remove('bi-volume-off-fill');
+        vol_icon.classList.add('bi-volume-mute-fill');
+    }
+    if (vol.value > 0 && vol.value <= 30) {
+        vol_icon.classList.remove('bi-volume-up-fill');
+        vol_icon.classList.remove('bi-volume-down-fill');
+        vol_icon.classList.add('bi-volume-off-fill');
+        vol_icon.classList.remove('bi-volume-mute-fill');
+    }
+    if (vol.value > 30 && vol.value <= 70) {
+        vol_icon.classList.remove('bi-volume-up-fill');
+        vol_icon.classList.add('bi-volume-down-fill');
+        vol_icon.classList.remove('bi-volume-off-fill');
+        vol_icon.classList.remove('bi-volume-mute-fill');
+    }
+    if (vol.value > 70) {
+        vol_icon.classList.add('bi-volume-up-fill');
+        vol_icon.classList.remove('bi-volume-down-fill');
+        vol_icon.classList.remove('bi-volume-off-fill');
+        vol_icon.classList.remove('bi-volume-mute-fill');
+    }
+    let vol_a = vol.value;
+    vol_bar.style.width = `${vol_a}%`;
+    vol_dot.style.left = `${vol_a}%`;
+    music.volume = vol_a / 100;
+});
 
 
 let pop_song_left = document.getElementById('pop_song_left');
