@@ -294,7 +294,7 @@ header .master_play .icon .shuffle {
     align-items: center;
 }
 
-header .master_play .icon #download_music {
+header .master_play .icon #repeat {
     font-size: 20px;
     margin-left: 10px;
 }
@@ -632,7 +632,7 @@ header .song_side .content .pop_song li {
     min-width: 100px;
     height: 140px;
     list-style-type: none;
-    margin-right: 10px;
+    margin-right: 15px;
     transition: 0.3 linear;
 }
 
@@ -728,7 +728,7 @@ header .song_side .content .popular_artists .item li {
     min-width: 60px;
     height: 60px;
     border-radius: 50%;
-    margin-right: 20px;
+    margin-right: 32px;
     cursor: pointer;
 }
 
